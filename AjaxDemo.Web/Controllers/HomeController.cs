@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AjaxDemo.Data;
 
+
 namespace AjaxDemo.Web.Controllers
 {
     public class HomeController : Controller
@@ -44,7 +45,7 @@ namespace AjaxDemo.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Updatet(Person person)
+        public IActionResult Update(Person person)
         {
             PersonDb db = new PersonDb(_connectionString);
             db.Update(person);

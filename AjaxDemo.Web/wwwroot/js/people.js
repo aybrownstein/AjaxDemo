@@ -15,11 +15,12 @@
 `);
             });
         });
+        
     }
 
     fillTable();
 
-    ("#add").on('click', function () {
+    $("#add").on('click', function () {
         const firstName = $("#first-name").val();
         const lastName = $("#last-name").val();
         const age = $("#age").val();
@@ -34,7 +35,7 @@
 
     });
 
-    (".table").on('click', '.delete', function () {
+    $(".table").on('click', '.delete', function () {
         const id = $(this).data('id');
 
         $.post('/Home/Delete', { id }, function () {
@@ -43,17 +44,20 @@
 
     })
 
-        (".table").on('click', '.edit', function () {
+        $(".table").on('click', '.edit', function () {
             $(".modal").modal();
-            const id = $(this).data('id');
-            const person = {
-                firstName = $("#first-name").val(),
-                lastName = $("#last-name").val(),
-                age = $("#age").val(),
-                id
-            };
+        });
 
-            $.post('/Home/Update', person, function () {
+    $(".update").on('click', function () {
+            const id = $(this).data('id');
+      
+            const firstName = $("#firstname").val();
+            const lastName = $("#lastname").val();
+            const age = $("#update-age").val();
+                
+           
+
+    $.post('/Home/Update', { firstName, lastName, age, id }, function () {
                 fillTable();
                 $(".modal").modal('hide');
                 $("#first-name").val('');
